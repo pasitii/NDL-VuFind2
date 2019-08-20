@@ -15,6 +15,7 @@
     }
   }
   ul.nav-tabs {
+    display: flex;
     @media(max-width: @screen-xs-max) {
       padding-top: 10px;
     }
@@ -31,6 +32,8 @@
     > li {
       color: @body-bg;
       display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       border-top: 4px solid transparent;
       border-bottom: 1px solid transparent;
@@ -46,10 +49,13 @@
         border-left: 1px solid @main-tabs-border-color;
         border-right: 1px solid @main-tabs-border-color;
         border-bottom: 1px solid @body-bg;
+
+        a:hover {
+          border: none;
+        }
       }
       > a {
         background-color: @main-tabs-background-color;
-        display: flex;
         padding: 10px 5px;
         margin-bottom: 0;
         border: 0;
