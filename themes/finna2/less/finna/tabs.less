@@ -30,7 +30,7 @@
     }
     > li {
       color: @body-bg;
-      display: table-cell;
+      display: flex;
       cursor: pointer;
       border-top: 4px solid transparent;
       border-bottom: 1px solid transparent;
@@ -49,8 +49,7 @@
       }
       > a {
         background-color: @main-tabs-background-color;
-        display: inline-table;
-        vertical-align: middle;
+        display: flex;
         padding: 10px 5px;
         margin-bottom: 0;
         border: 0;
@@ -66,8 +65,6 @@
         opacity: 1;
         padding-left: 0;
         color: @main-tabs-active-color;
-        display: inline-table;
-        vertical-align: middle;
         position: inherit;
         background-color: transparent;
         border: none;
