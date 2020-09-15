@@ -417,10 +417,10 @@ JS;
         <?php endif; ?>
       </div>
     </div>
-    <?php if ($this->layout()->templateName === 'home' && !$this->translationEmpty('search_bgImage_copyright')): ?>
-        <div aria-hidden="true" class="search-bgImage-copyright-block">
-          <div class="search-bgImage-copyright-text">
-            <?=$this->transEsc('search_bgImage_copyright')?>
+    <?php if ($this->layout()->templateName === 'home' && !$this->translationEmpty('search_bgImage_info_html')): ?>
+        <div aria-hidden="true" class="search-bgImage-info-block">
+          <div class="search-bgImage-info-text">
+            <?=$this->translate('search_bgImage_info_html')?>
           </div>
         </div>
     <?php endif; ?>
