@@ -417,6 +417,13 @@ JS;
         <?php endif; ?>
       </div>
     </div>
+    <?php if ($this->layout()->templateName === 'home' && !$this->translationEmpty('search_bgImage_copyright')): ?>
+        <div class="search-bgImage-copyright-block">
+          <div class="search-bgImage-copyright-text">
+            <?=$this->transEsc('search_bgImage_copyright')?>
+          </div>
+        </div>
+    <?php endif; ?>
       <?php if ($this->layout()->templateName === 'home' && $this->layout()->templateDir === 'search' && $template = $this->content()->findTemplateForLng('search/home/browsebar')): ?>
         <?=$this->render($template)?>
       <?php endif; ?>
