@@ -339,6 +339,12 @@ JS;
       }
     ?>
     <header class="hidden-print">
+      <div class="skip-link">
+        <?php if (isset($this->layout()->skiplink)): // Check available skip links ?>
+          <?=$this->layout()->skiplink ?>
+        <?php endif; ?>
+        <a href="#content"><?=$this->transEsc('Skip to content') // Add content skip link ?></a>
+      </div>
       <?php if (!$this->cookie()->get('cookieConsent')): ?>
         <?=$this->partial('Helpers/cookie-consent.phtml');?>
       <?php endif; ?>
@@ -357,13 +363,8 @@ JS;
         </div>
       <?php endif; ?>
       <div class="container-fluid navbar">
-        <div>
-          <?php if (isset($this->layout()->srmessage)): // message for benefit of screen-reader users ?>
-            <span class="sr-only"><?=$this->layout()->srmessage ?></span>
-          <?php endif; ?>
-          <a class="sr-only" href="#content"><?=$this->transEsc('Skip to content') ?></a>
+
           <?=$this->render('navibar.phtml')?>
-        </div>
       </div>
     </header>
     <section role="search" class="searchContent<?=$currentTabClass?>">
