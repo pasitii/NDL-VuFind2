@@ -339,12 +339,6 @@ JS;
       }
     ?>
     <header class="hidden-print">
-      <div class="skip-link">
-        <?php if (isset($this->layout()->skiplink)): // Check available skip links ?>
-          <?=$this->layout()->skiplink ?>
-        <?php endif; ?>
-        <a href="#content"><?=$this->transEsc('Skip to content') // Add content skip link ?></a>
-      </div>
       <?php if (!$this->cookie()->get('cookieConsent')): ?>
         <?=$this->partial('Helpers/cookie-consent.phtml');?>
       <?php endif; ?>
@@ -363,8 +357,11 @@ JS;
         </div>
       <?php endif; ?>
       <div class="container-fluid navbar">
-
-          <?=$this->render('navibar.phtml')?>
+        <?php if (isset($this->layout()->skiplink)): // Check available skip links ?>
+          <?=$this->layout()->skiplink ?>
+        <?php endif; ?>
+        <a class="sr-only sr-only-focusable" href="#content"><?=$this->transEsc('Skip to content') // Add content skip links ?></a>
+        <?=$this->render('navibar.phtml')?>
       </div>
     </header>
     <section role="search" class="searchContent<?=$currentTabClass?>">
