@@ -357,10 +357,10 @@ JS;
         </div>
       <?php endif; ?>
       <div class="container-fluid navbar">
-        <?php if (isset($this->layout()->skiplink)): // Check available skip links ?>
+        <?php if (isset($this->layout()->skiplink)): // skip link for benefit of screen-reader and keyboard users ?>
           <?=$this->layout()->skiplink ?>
         <?php endif; ?>
-        <a class="sr-only sr-only-focusable" href="#content"><?=$this->transEsc('Skip to content') // Add content skip links ?></a>
+        <a class="sr-only sr-only-focusable" href="#content"><?=$this->transEsc('Skip to content') // skip to content ?></a>
         <?=$this->render('navibar.phtml')?>
       </div>
     </header>
