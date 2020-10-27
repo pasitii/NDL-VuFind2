@@ -246,10 +246,10 @@
     <?php foreach ($this->results->getRecommendations('side') as $index => $current): ?>
       <?=$this->recommend($current, 'side', $index)?>
       <?php if (!$messageAdded) {
-        if (!isset($this->layout()->skiplink)) {
-          $this->layout()->skiplink = '';
+        if (!isset($this->layout()->srmessage)) {
+          $this->layout()->srmessage = '';
         }
-        $this->layout()->skiplink .= ' <a class="sr-only sr-only-focusable" href="#sidebar">' . $this->transEsc('Skip to narrowing options') . '</a>';
+        $this->layout()->srmessage .= ' <a class="sr-only sr-only-focusable" href="#sidebar">' . $this->transEsc('Skip to narrowing options') . '</a>';
         $messageAdded = true;
       }?>
     <?php endforeach; ?>

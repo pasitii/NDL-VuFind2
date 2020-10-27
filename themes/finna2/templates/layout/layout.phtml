@@ -357,8 +357,8 @@ JS;
         </div>
       <?php endif; ?>
       <div class="container-fluid navbar">
-        <?php if (isset($this->layout()->skiplink)): // skip link for benefit of screen-reader and keyboard users ?>
-          <?=$this->layout()->skiplink ?>
+        <?php if (isset($this->layout()->srmessage)): // message for benefit of screen-reader and keyboard users ?>
+          <?=$this->layout()->srmessage ?>
         <?php endif; ?>
         <a class="sr-only sr-only-focusable" href="#content"><?=$this->transEsc('Skip to content') // skip to content ?></a>
         <?=$this->render('navibar.phtml')?>
