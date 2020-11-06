@@ -357,8 +357,8 @@ JS;
         </div>
       <?php endif; ?>
       <div class="container-fluid navbar">
-        <?php if (isset($this->layout()->srmessage)): // message for benefit of screen-readerusers ?>
-          <?=$this->layout()->srmessage ?>
+        <?php if (isset($this->layout()->srmessage)): // message for benefit of screen-reader users ?>
+          <span class="sr-only"><?=$this->layout()->srmessage ?></span>
         <?php endif; ?>
         <?php if (isset($this->layout()->skiplink)): // additional skip links ?>
           <?=$this->layout()->skiplink ?>
