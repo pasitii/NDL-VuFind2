@@ -1,4 +1,5 @@
 <!-- START of: finna - content/about_finna_fi.phtml -->
+
 <?php $this->headTitle($this->translate('Finna - hakupalvelujen kokonaisuus')); $this->content()->setHeading($this->translate('Finna - hakupalvelujen kokonaisuus'));  ?>
 <p>Finna on koti Suomen miljoonille kulttuuri- ja tiedeaineistoille.</p>
 <p>Ainutlaatuisia sisältöjään Finnaan tuovat sadat kotimaiset toimijat, kuten arkistot, kirjastot ja museot.</p>
@@ -6,20 +7,20 @@
 <p>Tavoitteenamme on tehdä tiedon löytämisestä ja käyttämisestä sekä uuden oppimisesta mahdollisimman helppoa ja turvallista.</p>
 <h2>Mitä eroa Finna.fi:llä ja muilla Finna-hakupalveluilla?</h2>
 <p>Finna rakentuu aineistot yhteenkokoavasta Finna.fi:stä ja sadoista muista Finna-hakupalveluista.</p>
-<div class="panel finna-panel-content">
+<div class="finna-aboutfinna-panel panel ">
     <div class="panel-body">
         <h3>Finna.fi</h3>
         <p>Finna.fi:stä löydät kaikkien Finnassa mukana olevien toimijoiden aineistot yhdestä paikasta.</p>
         <p><a class="btn btn-primary" href="https://www.finna.fi/Content/about_finnafi">Lue lisää Finna.fi:stä</a></p>
     </div>
 </div>
-<div class="panel finna-panel-content">
+<div class="finna-aboutfinna-panel panel">
     <div class="panel-body">
         <h3>Muut Finna-hakupalvelut</h3>
         <p>Muut Finna-hakupalvelut keskittyvät tiettyjen aineiston tarjoajien aineistoihin.</p>
         <p>Esimerkiksi arkistojen, kirjastojen ja museoiden omissa hakupalveluissa voit tutustua erilaisiin poimintoihin tiettyjen aineistojen tarjoajien kokoelmista. Korkeakoulujen omat Finna-hakupalvelut tarjoavat opiskelijoilleen ja henkilökunnalleen avoimien aineistojen lisäksi lisensoituja e-aineistoja.</p>
         <p>Alla olevasta listasta näet, keillä on oma Finna-hakupalvelu.</p>
-        <ul class="nav finna-nav-sites">
+        <ul class="finna-aboutfinna-nav nav">
             <li role="presentation" ><a href="#archives"><?=$this->translate('Archives') ?></a></li>
             <li role="presentation" ><a href="#museums"><?=$this->translate('Museums') ?></a></li>
             <li role="presentation" ><a href="#polylib"><?=$this->translate('Polytechnic Libraries') ?></a></li>
@@ -32,4 +33,5 @@
         <?=$this->render('content/about_finna_sites.phtml') ?>
     </div>
 </div>
+
 <!-- END of: finna - content/about_finna_fi.phtml -->
