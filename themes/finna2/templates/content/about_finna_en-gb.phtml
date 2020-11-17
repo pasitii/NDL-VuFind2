@@ -9,9 +9,11 @@
 <p>The Finna family of services comprises Finna.fi, which brings together the material, and hundreds of other Finna search services.</p>
 <div class="finna-aboutfinna-panel panel ">
     <div class="panel-body">
-        <h3>Finna.fi</h3>
+        <h3><a href="https://www.finna.fi">Finna.fi</a></h3>
         <p>Finna.fi gives you access to material provided by all organisations participating in Finna in one location.</p>
-        <p><a class="btn btn-primary" href="https://www.finna.fi/Content/about_finnafi">Read more</a></p>
+        <?php if ($template = $this->content()->findTemplateForLng("content/about_finnafi")): ?>
+            <p><a class="btn btn-primary" href="<?=$this->url('content-page', ['page' => 'about_finnafi'])?>">Read more</a></p>
+        <?php endif; ?>
     </div>
 </div>
 <div class="finna-aboutfinna-panel panel">
