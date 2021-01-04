@@ -161,7 +161,7 @@
   );?>
 <?php endif; ?>
 
-<div class="table record-holdings-table">
+<div role="region" aria-label="<?=$this->transEsc('Holdings'); ?>" class="table record-holdings-table">
   <div class="headers">
     <?php $mergedData = $this->driver->tryMethod('getMergedRecordData'); ?>
     <?php $recordSourceId = $this->driver->getSourceIdentifier(); ?>

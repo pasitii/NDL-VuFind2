@@ -105,7 +105,7 @@
 
   <div class="clearfix hidden-lg hidden-md"></div>
   <?php // N.B. The element/class structure here is important for the ajax tabs to work properly ?>
-  <div class="record-tabs record-accordions">
+  <div role="region" aria-label="<?=$this->transEsc('Record Tabs'); ?>" class="record-tabs record-accordions">
     <?php if (count($this->tabs) > 0): ?>
       <a id="tabnav"></a>
         <?php if (count($this->tabs) > 3): ?>

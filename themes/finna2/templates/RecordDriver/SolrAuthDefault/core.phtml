@@ -34,10 +34,10 @@
   <?php if ($thumbnail && $thumbnailAlignment == 'left'): ?>
     <?=$thumbnail ?>
   <?php endif; ?>
-  <div class="media-body record-information">
+  <div class="media-body aria-labelledby="record-title" record-information">
       <div class="hidden-xs">
         <p class="format"><?=$this->transEsc($formats[0])?></p>
-        <h1 property="name" class="record-title"><?=$this->escapeHtml($this->driver->getTitle())?></h1>
+        <h1 property="name" id="record-title" class="record-title"><?=$this->escapeHtml($this->driver->getTitle())?></h1>
       </div>
       <?php if ($occupations = $this->driver->getOccupations()): ?>
         <div class="occupation"><?=implode(', ', $occupations)?></div>

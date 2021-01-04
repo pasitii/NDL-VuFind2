@@ -51,7 +51,7 @@
   <?php if ($thumbnail && $thumbnailAlignment == 'left'): ?>
     <?=$thumbnail ?>
   <?php endif; ?>
-  <div class="media-body record-information">
+  <div role="region" aria-label="<?=$this->transEsc('Record Information'); ?>" class="media-body record-information">
       <h1 property="name" class="record-title hidden-xs"><?=$this->escapeHtml($this->driver->getTitle())?></h1>
       <?= $this->R2()->register($this->driver, ['brief' => true])?>
       <?php if ($serviceURLs = $this->driver->getServiceURLs()): ?>
