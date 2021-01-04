@@ -203,7 +203,7 @@
         <div class="pagination-container">
           <?=$this->paginationControl($this->results->getPaginator(), 'Sliding', 'search/pagination_simple.phtml', ['results' => $this->results, 'label' => $resultsStr])?>
         </div>
-        <div role="region" aria-label="<?= $this->transEsc('Search Controls'); ?>" class="control-container text-right hidden-print">
+        <div role="region" aria-label="<?=$this->transEsc('Search Controls');?>" class="control-container text-right hidden-print">
           <?php if (!$browse): ?>
             <?=$this->render('search/controls/sort.phtml')?>
             <?=$this->render('search/controls/limit.phtml')?>
