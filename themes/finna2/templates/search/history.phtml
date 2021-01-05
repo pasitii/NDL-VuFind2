@@ -26,7 +26,7 @@
   <?= $this->context($this)->renderInContext("myresearch/menu.phtml", ['active' => 'history']); ?>
 <?php endif; ?>
 
-<div class="<?=$layoutLoggedIn ? $this->layoutClass('mainbody-myresearch') : $this->layoutClass('mainbody-myresearch-no-menu')?>">
+<div role="region" aria-label="<?=$this->transEsc("Search History")?>" class="<?=$layoutLoggedIn ? $this->layoutClass('mainbody-myresearch') : $this->layoutClass('mainbody-myresearch-no-menu')?>">
   <div class="history-holder">
     <?php if ($scheduledSearches): ?>
       <?php if ($this->alertemail): ?>

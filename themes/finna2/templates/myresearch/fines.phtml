@@ -41,7 +41,7 @@
 <!-- Leftside navigationbar -->
 <?= $this->context($this)->renderInContext("myresearch/menu.phtml", ['active' => 'fines']); ?>
 
-<div class="<?=$this->layoutClass('mainbody-myresearch')?>">
+<div role="region" aria-labelledby="my-research-header" class="<?=$this->layoutClass('mainbody-myresearch')?>">
   <div class="my-research-content">
     <?php if ($user): ?>
       <?php if (!empty($this->registerPayment)): ?>
@@ -57,7 +57,7 @@
         <?=$this->context($this)->renderInContext('librarycards/selectcard.phtml', ['user' => $user, 'label' => 'Library Card'])?>
       </div>
       <div class="useraccount-header">
-        <h2><?=$this->transEsc('Your Fines') . " (" . count($this->fines ?? []) . ")"?></h2>
+        <h2 id="my-research-header"><?=$this->transEsc('Your Fines') . " (" . count($this->fines ?? []) . ")"?></h2>
       </div>
     </div>
     <?=$this->flashmessages()?>

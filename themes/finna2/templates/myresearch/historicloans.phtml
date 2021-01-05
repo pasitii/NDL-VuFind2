@@ -16,7 +16,7 @@
 <!-- Leftside navigationbar -->
 <?= $this->context($this)->renderInContext("myresearch/menu.phtml", ['active' => 'historicLoans']); ?>
 
-<div class="<?=$this->layoutClass('mainbody-myresearch')?>">
+<div role="region" aria-labelledby="my-research-header" class="<?=$this->layoutClass('mainbody-myresearch')?>">
   <div class="my-research-content myresearch-grid-list">
     <?php if (!$this->translationEmpty('loan_history_instructions_html')): ?><p class="no-content-message"><?=$this->translate('loan_history_instructions_html')?></p><?php endif; ?>
     <?=$this->flashmessages()?>
@@ -24,7 +24,7 @@
       <?=$this->context($this)->renderInContext('librarycards/selectcard.phtml', ['user' => $user, 'label' => 'Library Card'])?>
     </div>
     <div class="useraccount-header">
-      <h2><?=$this->transEsc('Loan History')?> (<?=$recordCount;?>)</h2>
+      <h2 id="my-research-header"><?=$this->transEsc('Loan History')?> (<?=$recordCount;?>)</h2>
     </div>
     <?php if (isset($this->noSupport)): ?>
       <?php if ($user->getLibraryCards()->count() > 1): ?>

@@ -151,56 +151,56 @@
     </ul>
   </div>
 </div>
-
-<ul class="<?=$this->layoutClass('sidebar-myresearch')?> <?= $listOpen ? '' : 'move-list' ?> nav-tabs-personal list-group useraccount-nav nav-tabs finna-movement" role="menu">
-  <li class="menu-header hidden-xs hidden-sm">
-    <h1>
-      <?= $this->transEsc('Your Account') ?>
-      <?php if (!$this->translationEmpty('tooltip_myaccount_html')): ?>
-        <span class="tooltip-myaccount" data-toggle="tooltip" data-placement="auto" data-html="true" data-original-title="<?= $this->transEsc("tooltip_myaccount_html") ?>"><i class="fa fa-info-big"></i></span>
+<div id="myaccount-menu" role="region" aria-label="<?= $this->transEsc('Your Account Menu') ?>">
+  <ul class="<?=$this->layoutClass('sidebar-myresearch')?> <?= $listOpen ? '' : 'move-list' ?> nav-tabs-personal list-group useraccount-nav nav-tabs finna-movement" role="menu">
+    <li class="menu-header hidden-xs hidden-sm">
+      <h1>
+        <?= $this->transEsc('Your Account') ?>
+        <?php if (!$this->translationEmpty('tooltip_myaccount_html')): ?>
+          <span class="tooltip-myaccount" data-toggle="tooltip" data-placement="auto" data-html="true" data-original-title="<?= $this->transEsc("tooltip_myaccount_html") ?>"><i class="fa fa-info-big"></i></span>
+        <?php endif; ?>
+      </h1>
+    </li>
+    <?php foreach ($desktopList as $id => $value) : ?>
+    <?php
+      $isArray = is_array($value);
+      $listItem = $isArray ? $value : $menuListItems[$value] ?? ['show' => false];
+      if (isset($listItem['show']) && !$listItem['show']) {
+        continue;
+      }
+      $name = $isArray ? $id : $value;
+      $hasPartial = $listItem['partial'] ?? false;
+      $showSpinner = $listItem['showSpinner'] ?? false;
+    ?>
+      <?php if ($hasPartial): ?>
+        <li role="menuitem" class="dropdown <?= $listItem['active'] ? ' active' : ''?>">
+          <a href="<?=$this->escapeHtmlAttr($this->url($listItem['url']) . ($listItem['query'] ?? ''))?>" id="<?=$id?>" class="menu-parent sticky-menu hidden-xs hidden-sm list-group-item <?= !$listItem['active'] ? 'collapsed' : '' ?>" aria-haspopup="true" aria-expanded="<?=$listItem['active'] ? "true" : "false"?>">
+            <?=$this->transEsc($listItem['translation'])?>
+            <?php if ($showSpinner) : ?>
+              <i class="hidden fa fa-spinner fa-spin"></i><span class="ajax-error hidden"><small> <?=$this->translate('An error has occurred'); ?></small></span>
+            <?php endif; ?>
+            <span class="caret"></span>
+          </a>
+          <div class="<?= $value['partial']['wrapperClass'] ?? 'ajax-wrapper'?>">
+            <?php if ($listItem['active']): ?>
+              <?= $this->partial($value['partial']['url'], $value['partial']['params']); ?>
+            <?php endif; ?>
+          </div>
+        </li>
+      <?php else: ?>
+        <li role="menuitem" class="hidden-xs hidden-sm <?="menu-$name"?> <?=$activeToLower === $name ? ' active' : ''?>">
+          <a href="<?=$this->escapeHtmlAttr($this->url($listItem['url']) . ($listItem['query'] ?? ''))?>" class="list-group-item" <?=$activeToLower === $name ? 'aria-current="page"' : ''?>>
+            <?=$this->transEsc($listItem['translation'])?>
+            <?php if (isset($listItem['iconClass'])): ?>
+              <i class="<?=$listItem['iconClass']?>" aria-hidden="true"></i>
+            <?php endif; ?>
+            <?php if (!empty($listItem['statusKey'])): ?>
+              <span class="<?=$listItem['statusKey']?>-status status hidden"><i class="fa fa-spin fa-spinner" aria-hidden="true"></i></span>
+            <?php endif; ?>
+          </a>
+        </li>
       <?php endif; ?>
-    </h1>
-  </li>
-  <?php foreach ($desktopList as $id => $value) : ?>
-  <?php
-    $isArray = is_array($value);
-    $listItem = $isArray ? $value : $menuListItems[$value] ?? ['show' => false];
-    if (isset($listItem['show']) && !$listItem['show']) {
-      continue;
-    }
-    $name = $isArray ? $id : $value;
-    $hasPartial = $listItem['partial'] ?? false;
-    $showSpinner = $listItem['showSpinner'] ?? false;
-  ?>
-    <?php if ($hasPartial): ?>
-      <li role="menuitem" class="dropdown <?= $listItem['active'] ? ' active' : ''?>">
-        <a href="<?=$this->escapeHtmlAttr($this->url($listItem['url']) . ($listItem['query'] ?? ''))?>" id="<?=$id?>" class="menu-parent sticky-menu hidden-xs hidden-sm list-group-item <?= !$listItem['active'] ? 'collapsed' : '' ?>" aria-haspopup="true" aria-expanded="<?=$listItem['active'] ? "true" : "false"?>">
-          <?=$this->transEsc($listItem['translation'])?>
-          <?php if ($showSpinner) : ?>
-            <i class="hidden fa fa-spinner fa-spin"></i><span class="ajax-error hidden"><small> <?=$this->translate('An error has occurred'); ?></small></span>
-          <?php endif; ?>
-          <span class="caret"></span>
-        </a>
-        <div class="<?= $value['partial']['wrapperClass'] ?? 'ajax-wrapper'?>">
-          <?php if ($listItem['active']): ?>
-            <?= $this->partial($value['partial']['url'], $value['partial']['params']); ?>
-          <?php endif; ?>
-        </div>
-      </li>
-    <?php else: ?>
-      <li role="menuitem" class="hidden-xs hidden-sm <?="menu-$name"?> <?=$activeToLower === $name ? ' active' : ''?>">
-        <a href="<?=$this->escapeHtmlAttr($this->url($listItem['url']) . ($listItem['query'] ?? ''))?>" class="list-group-item" <?=$activeToLower === $name ? 'aria-current="page"' : ''?>>
-          <?=$this->transEsc($listItem['translation'])?>
-          <?php if (isset($listItem['iconClass'])): ?>
-            <i class="<?=$listItem['iconClass']?>" aria-hidden="true"></i>
-          <?php endif; ?>
-          <?php if (!empty($listItem['statusKey'])): ?>
-            <span class="<?=$listItem['statusKey']?>-status status hidden"><i class="fa fa-spin fa-spinner" aria-hidden="true"></i></span>
-          <?php endif; ?>
-        </a>
-      </li>
-    <?php endif; ?>
-  <?php endforeach; ?>
-</ul>
-
+    <?php endforeach; ?>
+  </ul>
+</div>
 <!-- END of: finna - myresearch/menu.phtml -->
