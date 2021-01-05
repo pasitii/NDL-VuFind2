@@ -78,7 +78,7 @@
 ?>
 </div>
 <div class="container">
-<div class="record source<?=$this->escapeHtmlAttr($this->driver->getSourceIdentifier())?> record-row <?= $largeImageLayout ? 'large-image-layout' : '' ?>">
+<div role="region" aria-label="<?=$this->transEsc('Record'); ?>" class="record source<?=$this->escapeHtmlAttr($this->driver->getSourceIdentifier())?> record-row <?= $largeImageLayout ? 'large-image-layout' : '' ?>">
   <?= $this->R2()->registeredInfo($this->driver) ?>
   <div>
       <?=$this->record($this->driver)->getToolbar()?>

@@ -1,5 +1,5 @@
 <!-- START of: finna - RecordDriver/DefaultRecord/image-rights.phtml -->
-<div class="access-rights">
+<div role="region" aria-label="<?=$this->transEsc('Image Rights'); ?>" class="access-rights">
   <?php if (!empty($rights['copyright']) || !empty($rights['description'])): ?>
     <?php
       $descriptions = $rights['description'] ?? [];
