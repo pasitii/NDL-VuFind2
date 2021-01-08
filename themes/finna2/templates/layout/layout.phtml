@@ -361,7 +361,8 @@ JS;
         <?=$this->render('navibar.phtml')?>
       </div>
     </header>
-    <section role="region" aria-label="<?=$this->transEsc('Search')?>" class="searchContent<?=$currentTabClass?>">
+    <section aria-labelledby="search-header" class="searchContent<?=$currentTabClass?>">
+      <h1 id="search-header" class="sr-only"><?=$this->transEsc('Search')?></h1>
       <?php if ($this->layout()->templateName === 'home' && $this->layout()->templateDir === 'search'): ?>
         <a class="btn btn-primary btn-uppercase floating-feedback-btn" href="<?=$this->url('feedback-home') ?>"><?=$this->transEsc('Feedback')?></a>
       <?php endif; ?>
