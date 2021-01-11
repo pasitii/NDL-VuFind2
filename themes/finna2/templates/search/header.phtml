@@ -21,7 +21,7 @@
     $searchId = !empty($this->results) ? $this->results->getSearchId() : $searchId;
 ?>
 <?php if ($searchType == 'advanced'): ?>
-  <div class="adv-search-header">
+  <div role="complementary" aria-label="<?=$this->transEsc("Advanced Search Functions")?>" class="adv-search-header">
     <div class="container">
       <div class="searchbox-flex">
         <?php if ($this->layout()->templateDir === 'record'): ?>
@@ -106,8 +106,8 @@
 <?php else: ?>
   <div class="finna-main-header-wrapper<?=$searchType === 'advanced' ? ' search-advanced' : ''?>">
     <div class="container <?=$searchType != 'advanced' ? 'hidden-xs' : '';?>">
-      <div class="finna-main-header">
-        <h1 class="search-result-header">
+      <div role="complementary" aria-labelledby="search-result-header" class="finna-main-header">
+        <h1 id="search-result-header" class="search-result-header">
         <?php if ($this->recordsFound || isset($onRecordPage)): ?>
           <?php if (isset($this->overrideSearchHeading)): ?>
             <?=$this->overrideSearchHeading?>
