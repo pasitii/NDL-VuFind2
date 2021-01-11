@@ -1,5 +1,5 @@
 <?php //Don't add start and end tags ?>
-<div class="record-rating text-left">
+<div role="complementary" aria-label="<?=$this->transEsc('finna rating'); ?>" class="record-rating text-left">
   <div class="rating-stars">
     <div class="rating-link">
         <?=$this->record($this->driver)->getRating()?>

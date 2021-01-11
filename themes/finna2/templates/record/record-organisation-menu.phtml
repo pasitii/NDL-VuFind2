@@ -5,8 +5,8 @@
    $recordType = $this->driver->tryMethod('getRecordFormat');
    $sector = $this->driver->tryMethod('getSector');
 ?>
-<div class="recordProvidedBy">
-  <h2 class="record-organisation-header">
+<div role="complementary" aria-labelledby="record-organisation-header" class="recordProvidedBy">
+  <h2 id="record-organisation-header" class="record-organisation-header">
     <?php if ($mergedData && count($mergedData['records']) > 1): ?>
       <?=$this->transEsc('material_provided_by_multiple', ['%%count%%' => count($mergedData['records'])])?>
     <?php else: ?>
