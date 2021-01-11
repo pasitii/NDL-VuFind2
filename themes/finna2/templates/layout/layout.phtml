@@ -361,8 +361,8 @@ JS;
         <?=$this->render('navibar.phtml')?>
       </div>
     </header>
-    <section aria-labelledby="search-header" class="searchContent<?=$currentTabClass?>">
-      <h1 id="search-header" class="sr-only"><?=$this->transEsc('Search')?></h1>
+    <section class="searchContent<?=$currentTabClass?>">
+      <h1 class="sr-only"><?=$this->transEsc('Search')?></h1>
       <?php if ($this->layout()->templateName === 'home' && $this->layout()->templateDir === 'search'): ?>
         <a class="btn btn-primary btn-uppercase floating-feedback-btn" href="<?=$this->url('feedback-home') ?>"><?=$this->transEsc('Feedback')?></a>
       <?php endif; ?>
@@ -407,7 +407,7 @@ JS;
 
     <?php // TODO: get rid of template-dir-* and template-name-* here ?>
     <section role="main" class="main template-dir-<?=$this->templateDir?> template-name-<?=$this->templateName?><?=$this->browse ? ' browse' : '' ?><?=$currentTabClass?>">
-      <?php if ((!isset($this->layout()->showBreadcrumbs) || $this->layout()->showBreadcrumbs == true)
+    <?php if ((!isset($this->layout()->showBreadcrumbs) || $this->layout()->showBreadcrumbs == true)
             && !empty($this->layout()->breadcrumbs)
             && $this->layout()->breadcrumbs !== false
           ): ?>
@@ -434,7 +434,7 @@ JS;
                 </ul>
               </div>
             </nav>
-          <?php endif; ?>
+      <?php endif; ?>
       <?php if (!empty($this->layout()->advSearchHeader)): ?>
         <?=$this->layout()->advSearchHeader; ?>
       <?php endif; ?>
