@@ -146,25 +146,13 @@
   }
 }
 
-//Finna breadcrumbs
+// Finna breadcrumbs
+.breadcrumbs {
+  background-color: @breadcrumb-bg;
+}
 .breadcrumb {
-  display: none;
-  margin: 0px;
-  margin-top: 15px;
-  background-color: transparent;
-
-  > li {
-    background-color: @breadcrumb-bg;
-    margin: 0px -2px;
-    padding: @breadcrumb-padding-vertical @breadcrumb-padding-horizontal;
-    + li:before {
-      content: @breadcrumb-separator;
-      font-size: 12px;
-    }
-  }
-  > li a {
-    color: @breadcrumb-color;
-  }
+  border-radius: 0;
+  margin-bottom: 0;
 }
 
 #my-info-dropdown-menu {
