@@ -332,7 +332,7 @@ JS;
         }
       }
     ?>
-    <header class="hidden-print">
+    <header role="banner" class="hidden-print">
       <?php if (!$this->cookie()->get('cookieConsent')): ?>
         <?=$this->partial('Helpers/cookie-consent.phtml');?>
       <?php endif; ?>
