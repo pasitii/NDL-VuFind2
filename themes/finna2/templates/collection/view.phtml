@@ -46,7 +46,7 @@
   if (!empty($lastSearch)) {
     $this->layout()->breadcrumbs = '<li>' . $lastSearch . '</li> ';
   }
-  $this->layout()->breadcrumbs .= '<li><a href="' . $this->recordLink()->getBreadcrumb($this->driver) . '</li>';
+  $this->layout()->breadcrumbs .= '<li class="active" aria-current="page">' . $this->recordLink()->getBreadcrumb($this->driver) . '</li>';
 ?>
 <?php if (!empty($lastSearch)) : ?>
 </div>
