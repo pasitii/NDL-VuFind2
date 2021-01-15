@@ -79,7 +79,7 @@
           <?=$this->render($template)?>
         <?php endif; ?>
       </ul>
-      <div role="navigation" aria-label="<?=$this->escapeHtmlAttr($this->translate('select_language'))?>">
+      <div role="navigation" aria-label="<?=$this->transEscAttr('select_language')?>">
         <ul class="nav navbar-nav lang">
           <?php if (isset($this->layout()->allLangs) && count($this->layout()->allLangs) > 1): ?>
             <?php $i = 1;?>
