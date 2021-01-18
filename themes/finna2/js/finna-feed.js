@@ -77,10 +77,10 @@ finna.feed = (function finnaFeed() {
         + '<span class="slick-sr-only">' + VuFind.translate("Next") + '</span>'
                 + '</button>',
       regionLabel: VuFind.translate("Image Carousel"),
-      customPaging: function(slider, i) {
+      customPaging: function initCustomPaging(slider, i) {
         return $('<button type="button">'
          + '<span class="slick-dot-icon" aria-hidden="true"></span>'
-         + '<span class="slick-sr-only">' + VuFind.translate("Go to") + ' slide ' + (i+1) + '</span>'
+         + '<span class="slick-sr-only">' + VuFind.translate("Go to") + ' slide ' + (i + 1) + '</span>'
          + '</button>');
       },
       touchThreshold: 8,
