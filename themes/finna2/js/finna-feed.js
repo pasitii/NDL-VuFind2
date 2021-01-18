@@ -80,7 +80,7 @@ finna.feed = (function finnaFeed() {
       customPaging: function initCustomPaging(slider, i) {
         return $('<button type="button">'
          + '<span class="slick-dot-icon" aria-hidden="true"></span>'
-         + '<span class="slick-sr-only">' + VuFind.translate("Go to") + ' slide ' + (i + 1) + '</span>'
+         + '<span class="slick-sr-only">' + VuFind.translate("Go to slide") + ' ' + (i + 1) + '</span>'
          + '</button>');
       },
       touchThreshold: 8,
