@@ -156,10 +156,14 @@ finna.layout = (function finnaLayout() {
     if ($('.content-navigation-menu')[0]) {
       $('.content-section').each(function initContentSection(index) {
         var link = '#' + $(this).attr('id');
-        $('.content-navigation-menu').append('<p class="nav-' + index + '"> <a href="' + link + '">' + $('h2', this).text() + '</a></p>');
-
+        var $p = $('<p>')
+          .addClass('nav-' + index)
+          .appendTo($('.content-navigation-menu'));
+        $('<a>')
+          .attr('href', link)
+          .text($('h2', this).text())
+          .appendTo($p);
       });
-
     }
   }
 
