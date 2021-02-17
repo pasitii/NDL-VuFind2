@@ -130,15 +130,23 @@ class Backend extends AbstractBackend implements RetrieveBatchInterface
         $secondaryQuery = $this->translateQuery($query);
         $secondaryParams = $params->get('secondary_backend')[0];
         $params->remove('secondary_backend');
+
+        $primaryCollection = null;
+        $secondaryCollection = null;
+
         // If offset is less than the limit, fetch from both backends
         // up to the limit first.
+        $blendLimit = $this->blendLimit;
+        if ($limit === 0) {
+            $blendLimit = 0;
+        }
         $exception = null;
         if ($offset <= $this->blendLimit) {
             try {
                 $primaryCollection = $this->primaryBackend->search(
                     $query,
                     0,
-                    $this->blendLimit,
+                    $blendLimit,
                     $params
                 );
             } catch (\Exception $e) {
@@ -150,7 +158,7 @@ class Backend extends AbstractBackend implements RetrieveBatchInterface
                 $secondaryCollection = $this->secondaryBackend->search(
                     $secondaryQuery,
                     0,
-                    $this->blendLimit,
+                    $blendLimit,
                     $secondaryParams
                 );
             } catch (\Exception $e) {
@@ -209,8 +217,9 @@ class Backend extends AbstractBackend implements RetrieveBatchInterface
 
         // Fill up to the required records in a round-robin fashion
         if ($offset + $limit > $this->blendLimit) {
-            $primaryTotal = $primaryCollection->getTotal();
-            $secondaryTotal = $secondaryCollection->getTotal();
+            $primaryTotal = $primaryCollection ? $primaryCollection->getTotal() : 0;
+            $secondaryTotal = $secondaryCollection
+                ? $secondaryCollection->getTotal() : 0;
             $primaryCollectionOffset = 0;
             $secondaryCollectionOffset = 0;
             $primaryOffset = 0;

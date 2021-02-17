@@ -116,6 +116,11 @@ class Params extends \Finna\Search\Solr\Params
     public function getBackendParameters()
     {
         $params = parent::getBackendParameters();
+        if (!is_callable([$this->secondaryParams, 'getBackendParameters'])) {
+            throw new \Exception(
+                'Secondary backend missing support for getBackendParameters'
+            );
+        }
         $secondaryParams = $this->secondaryParams->getBackendParameters();
         $params->set(
             'secondary_backend',
@@ -154,12 +159,52 @@ class Params extends \Finna\Search\Solr\Params
                         $value = (bool)$value;
                     }
                     $resultValues = [];
-                    foreach ($mappings[$field]['Values'] ?? [] as $k => $v) {
-                        if ('boolean' === $facetType) {
-                            $v = (bool)$v;
+                    $valueMappings = $mappings[$field]['Values'] ?? [];
+                    if ($valueMappings) {
+                        foreach ($valueMappings as $k => $v) {
+                            if ('boolean' === $facetType) {
+                                $v = (bool)$v;
+                            }
+                            if ($value === $v) {
+                                $resultValues[] = $k;
+                            }
                         }
-                        if ($value === $v) {
-                            $resultValues[] = $k;
+                        // Check also higher levels when converting hierarchical
+                        // facets:
+                        if (in_array($field, $hierarchicalFacets)) {
+                            $levelOffset = -1;
+                            do {
+                                $levelGood = false;
+                                foreach ($valueMappings as $k => $v) {
+                                    $parts = explode('/', $v);
+                                    $partCount = count($parts);
+                                    if ($parts[0] <= 0 || $partCount <= 2) {
+                                        continue;
+                                    }
+                                    $level = $parts[0] + $levelOffset;
+                                    if ($level < 0) {
+                                        continue;
+                                    }
+                                    $levelGood = true;
+                                    $levelValue = $level . '/'
+                                        . implode(
+                                            '/',
+                                            array_slice($parts, 1, $level + 1)
+                                        ) . '/';
+                                    if ($value === $levelValue) {
+                                        $resultValues[] = $k;
+                                    }
+                                }
+                                --$levelOffset;
+                            } while ($levelGood);
+                        }
+                    }
+                    foreach ($mappings[$field]['RegExp'] ?? [] as $regexp) {
+                        $search = $regexp['Search'] ?? '';
+                        $replace = $regexp['Replace'] ?? '';
+                        if ($search) {
+                            $resultValues[]
+                                = preg_replace("/$search/", $replace, $value);
                         }
                     }
                     if ($resultValues) {
@@ -181,9 +226,6 @@ class Params extends \Finna\Search\Solr\Params
                         ],
                         $values
                     );
-                }
-                if ('Primo' === $secondary) {
-                    $prefix = '';
                 }
                 foreach ($values as $value) {
                     $newFilters[] = $prefix . $field . ':"' . $value . '"';
