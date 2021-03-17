@@ -86,6 +86,7 @@ finna.feed = (function finnaFeed() {
       touchThreshold: 8,
       autoplay: autoplay !== 0,
       autoplaySpeed: autoplay,
+      useAutoplayToggleButton: false,
       slidesToShow: settings.slidesToShow.desktop,
       slidesToScroll: settings.scrolledItems.desktop,
       speed: calculateScrollSpeed(settings.scrolledItems.desktop, settings.scrollSpeed),
